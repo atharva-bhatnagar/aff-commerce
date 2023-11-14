@@ -10,6 +10,7 @@
             background-color: #f4f4f4;
             margin: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
@@ -61,13 +62,26 @@
         <h2>Login</h2>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" >
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" >
+
+        <p>Don't have an account? <a href="{{route('register')}}">register here</a></p>
+        <br><br>
+        <p>Go to <a href="{{route('home')}}">Homepage</a>></p>
 
         <input type="submit" value="Login">
     </form>
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $err)
+            <div>
+                <p style="color: red">{{$err}}</p><br/>
+            </div>
+        @endforeach
+    @endif
+
 
 </body>
 </html>
